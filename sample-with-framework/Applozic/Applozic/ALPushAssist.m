@@ -20,6 +20,9 @@
 
 
 @implementation ALPushAssist
+
+@dynamic permissibleTopViewControllers;
+
 // WHEN NON-APPLOZIC VIEWs OPENED
 -(void)assist:(NSString*)notiMsg and :(NSMutableDictionary*)dict ofUser:(NSString*)userId{
     
@@ -34,7 +37,16 @@
 }
 
 
--(BOOL) isOurViewOnTop{
+-(BOOL) isOurViewOnTop
+{
+    for (NSString *className in ALPushAssist.permissibleTopViewControllers)
+    {
+        if ([self.topViewController isKindOfClass:NSClassFromString(className)])
+        {
+            return YES;
+        }
+    }
+    
     return ( [self.topViewController isKindOfClass:[ALMessagesViewController class]]
             ||[self.topViewController isKindOfClass:[ALChatViewController class]]
             ||[self.topViewController isKindOfClass:[ALGroupDetailViewController class]]
