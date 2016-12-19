@@ -17,11 +17,12 @@
 #import "ALAppLocalNotifications.h"
 #import "ALGroupDetailViewController.h"
 #import "ALNewContactsViewController.h"
+#import "ALApplozicSettings.h"
+
 
 
 @implementation ALPushAssist
 
-@dynamic permissibleTopViewControllers;
 
 // WHEN NON-APPLOZIC VIEWs OPENED
 -(void)assist:(NSString*)notiMsg and :(NSMutableDictionary*)dict ofUser:(NSString*)userId{
@@ -32,6 +33,7 @@
 
 }
 
+
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:@"showNotificationAndLaunchChat"];
 }
@@ -39,13 +41,21 @@
 
 -(BOOL) isOurViewOnTop
 {
-    for (NSString *className in ALPushAssist.permissibleTopViewControllers)
+    
+    NSArray * viewControllers = [ALApplozicSettings getPermissibleTopViewControllerClassNames];
+    
+    if (viewControllers != nil)
     {
-        if ([self.topViewController isKindOfClass:NSClassFromString(className)])
+        
+        for (NSString *className in viewControllers)
         {
-            return YES;
+            if ([self.topViewController isKindOfClass:NSClassFromString(className)])
+            {
+                return YES;
+            }
         }
     }
+
     
     return ( [self.topViewController isKindOfClass:[ALMessagesViewController class]]
             ||[self.topViewController isKindOfClass:[ALChatViewController class]]

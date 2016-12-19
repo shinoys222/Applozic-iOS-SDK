@@ -15,7 +15,6 @@
 @property(nonatomic, readonly, strong) UIViewController *topViewController;
 
 @property(nonatomic,strong) ALChatLauncher * chatLauncher;
-@property(class,nonatomic,strong) NSArray *permissibleTopViewControllers;
 
 -(void)assist:(NSString*)notiMsg and :(NSMutableDictionary*)dict ofUser:(NSString*)userId;
 - (UIViewController*)topViewController ;

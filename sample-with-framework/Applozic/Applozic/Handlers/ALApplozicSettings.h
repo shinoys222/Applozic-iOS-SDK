@@ -65,6 +65,7 @@
 #define CUSTOM_MSG_FONT @"com.applozic.userdefault.CUSTOM_MSG_FONT"
 #define FILTER_ONLY_CONTACT_TYPE_ID @"com.applozic.userdefault.FILTER_ONLY_CONTACT_TYPE_ID"
 #define CUSTOM_NAVIGATION_CLASS_NAME @"com.applozic.userdefault.NAVIGATION_CONTROLLER_CLASS_NAME"
+#define CUSTOM_TOPVIEWCONTROLLER_CLASS_NAMES @"com.applozic.userdefault.CUSTOM_TOPVIEWCONTROLLER_CLASS_NAMES"
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -265,8 +266,7 @@
 +(NSString *)getCustomNavigationControllerClassName;
 +(void)setNavigationControllerClassName:(NSString *)className;
 
-
-
-
++(NSArray *)getPermissibleTopViewControllerClassNames;
++(void)setPermissibleTopViewControllerClassNames:(NSArray *)viewControllers;
 
 @end

@@ -728,5 +728,20 @@ NOTIFICATION_DISABLE = 2
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++(NSArray *)getPermissibleTopViewControllerClassNames
+{
+    
+    NSArray * viewControllers = [[NSUserDefaults standardUserDefaults] valueForKey:CUSTOM_TOPVIEWCONTROLLER_CLASS_NAMES];
+    return viewControllers;
+    
+}
+
++(void)setPermissibleTopViewControllerClassNames:(NSArray *)viewControllers
+{
+    [[NSUserDefaults standardUserDefaults] setObject:viewControllers forKey:CUSTOM_TOPVIEWCONTROLLER_CLASS_NAMES];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
 
 @end
